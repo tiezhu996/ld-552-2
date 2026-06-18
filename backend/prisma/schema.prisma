@@ -114,21 +114,24 @@ model Resume {
 }
 
 model Interview {
-  id            Int             @id @default(autoincrement())
-  resumeId      Int
-  interviewerId Int
-  round         Int
-  scheduledAt   DateTime
-  duration      Int
-  type          InterviewType
-  feedback      String?         @db.Text
-  score         Int?
-  result        InterviewResult
-  notes         String?         @db.Text
-  createdAt     DateTime        @default(now())
-  updatedAt     DateTime        @updatedAt
-  resume        Resume          @relation(fields: [resumeId], references: [id])
-  interviewer   User            @relation(fields: [interviewerId], references: [id])
+  id                  Int             @id @default(autoincrement())
+  resumeId            Int
+  interviewerId       Int
+  round               Int
+  scheduledAt         DateTime
+  duration            Int
+  type                InterviewType
+  feedback            String?         @db.Text
+  score               Int?
+  professionalScore   Int?
+  communicationScore  Int?
+  cultureScore        Int?
+  result              InterviewResult
+  notes               String?         @db.Text
+  createdAt           DateTime        @default(now())
+  updatedAt           DateTime        @default(now()) @updatedAt
+  resume              Resume          @relation(fields: [resumeId], references: [id])
+  interviewer         User            @relation(fields: [interviewerId], references: [id])
 }
 
 model Offer {
